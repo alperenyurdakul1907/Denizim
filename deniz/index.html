@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>💖</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: radial-gradient(circle at top, #200020, #000);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .scene {
+        position: relative;
+        width: 300px;
+        height: 300px;
+    }
+
+    .heart {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, #ff2d55, #ff6b81);
+        transform: translate(-50%, -50%) rotate(-45deg);
+        animation: pulse 1.2s infinite;
+        box-shadow: 0 0 50px rgba(255,45,85,0.9);
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: inherit;
+        border-radius: 50%;
+    }
+
+    .heart::before {
+        top: -60px;
+        left: 0;
+    }
+
+    .heart::after {
+        left: 60px;
+        top: 0;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+        }
+        50% {
+            transform: translate(-50%, -50%) rotate(-45deg) scale(1.2);
+        }
+    }
+
+    /* NOT KUTUSU */
+    .note {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 260px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        color: #fff;
+        text-align: center;
+        line-height: 1.6;
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.6s ease;
+        z-index: 3;
+        box-shadow: 0 0 30px rgba(255,45,85,0.4);
+    }
+
+    .note.show {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        pointer-events: auto;
+    }
+</style>
+</head>
+<body>
+
+<div class="scene">
+    <div class="heart" onclick="showNote()"></div>
+
+    <div class="note" id="note">
+       <br> istemeden üzdüğümü biliyorum.
+Bunu telafi etmek için değil,
+kalbimdekini hissettirmek için buradayım.
+Çünkü sen, benim için hâlâ çok değerlisin.<br><br>
+       <small>💖 Seni seviyorum. 💖</small>
+    </div>
+</div>
+
+<script>
+    function showNote() {
+        document.getElementById("note").classList.toggle("show");
+    }
+</script>
+
+</body>
+</html>
